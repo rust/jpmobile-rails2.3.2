@@ -30,14 +30,8 @@ end
 
 ## add helper methods to rails testing framework
 module ActionController
-  if ::ActionPack::VERSION::MAJOR >=2 and ::ActionPack::VERSION::MINOR == 3
-    class TestRequest < Request
-      attr_accessor :user_agent
-    end
-  else
-    class TestRequest < AbstractRequest
-      attr_accessor :user_agent
-    end
+  class TestRequest < Request
+    attr_accessor :user_agent
   end
 end
 

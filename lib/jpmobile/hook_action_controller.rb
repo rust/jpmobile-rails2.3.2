@@ -11,15 +11,13 @@ class ActionController::Base
     end
   end
 
-  if ::ActionPack::VERSION::MAJOR >=2 and ::ActionPack::VERSION::MINOR == 3
-    class << self
-      def view_paths=(value)
-        @view_paths = ActionView::Base.process_view_paths(value) if value
-      end
-    end
-
+  class << self
     def view_paths=(value)
-      @view_paths = ActionView::Base.process_view_paths(value, controller) if value
+      @view_paths = ActionView::Base.process_view_paths(value) if value
     end
+  end
+
+  def view_paths=(value)
+    @view_paths = ActionView::Base.process_view_paths(value, controller) if value
   end
 end
