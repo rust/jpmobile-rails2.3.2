@@ -49,6 +49,17 @@ namespace :test do
         FileUtils.cp_r(file, rails_root)
       end
 
+      # for 2.3.2
+      if rails_version == "2.3.2"
+        config_path = File.join(rails_root, 'config', 'environment.rb')
+        File.open(config_path, 'a') do |file|
+          file.write <<-END
+
+ActionController::Base.session = {:key => "_session_id", :cookie_only => false}
+END
+        end
+      end
+
       # run tests in rails
       cd rails_root
       sh "rake db:migrate"
