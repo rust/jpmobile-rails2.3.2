@@ -20,18 +20,24 @@ end
 
 def request_with_ua(user_agent, env={})
   fake_cgi = FakeCgi.new(user_agent, env)
-  [ 
-    ActionController::CgiRequest.new(fake_cgi), 
+  [
+    ActionController::CgiRequest.new(fake_cgi),
     Rack::Request.new(
       Rack::MockRequest.env_for('http://www.example.jp', fake_cgi.env_table)
-    ).extend(Jpmobile::RequestWithMobile) 
+    ).extend(Jpmobile::RequestWithMobile)
   ]
 end
 
 ## add helper methods to rails testing framework
 module ActionController
-  class TestRequest < AbstractRequest
-    attr_accessor :user_agent
+  if ::ActionPack::VERSION::MAJOR >=2 and ::ActionPack::VERSION::MINOR == 3
+    class TestRequest < Request
+      attr_accessor :user_agent
+    end
+  else
+    class TestRequest < AbstractRequest
+      attr_accessor :user_agent
+    end
   end
 end
 
