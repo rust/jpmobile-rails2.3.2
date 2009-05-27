@@ -1,5 +1,8 @@
 = jpmobile: A Rails plugin for Japanese mobile-phones
 
+== jpmobile-rails2.3.2とは
+Rust/OGAWA による、jpmobile の Rails 2.3.2 専用版独自 fork です。
+
 == jpmobileとは
 携帯電話特有の機能を Rails で利用するためのプラグイン。
 以下の機能を備える。
@@ -221,3 +224,10 @@ Copyright 2006 (c) Yohji Shidara, under MIT License.
 Yohji Shidara <dara@shidara.net>
 
 http://d.hatena.ne.jp/darashi
+
+== Rust/OGAWA
+
+Shin-ichiro OGAWA <rust.stnard@gmail.com>
+
+http://d.hatena.ne.jp/conceal-rs/
+http://twitter.com/conceal_rs/
